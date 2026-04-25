@@ -77,7 +77,7 @@
          display: flex;
          justify-content: space-between;
          padding: 10px 40px;
-         background: blue;
+         background: #ff003c; /* Matches main racing red */
          font-size: 14px;
      }
      
@@ -103,9 +103,9 @@
      }
      .btn {
          padding: 10px 18px;
-         background: #1e3a8a;
+         background: #ff003c;
          color: white;
-         border-radius: 20px;
+         border-radius: 5px;
          text-decoration: none;
      }
      footer{
@@ -165,7 +165,77 @@
     color:#777;
     font-size:13px;
     }
-     
+
+    /* --- MODAL STYLES --- */
+    /* --- MODAL STYLES --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      display: none; /* Controlled by JS flex */
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: #1a1a1a;
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+      position: relative;
+      border: 2px solid #ff3c00;
+      box-shadow: 0 0 30px rgba(255, 60, 0, 0.4);
+      animation: modalZoom 0.3s ease-out;
+    }
+
+    @keyframes modalZoom {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 20px; top: 15px;
+      font-size: 32px;
+      cursor: pointer;
+      color: #888;
+      line-height: 1;
+    }
+
+    .close-modal:hover { color: white; }
+
+    .modal-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .modal-btn {
+      width: 100%;
+      padding: 15px;
+      background: #ff3c00;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .modal-btn:hover { background: white; color: black; }
+
+    .modal-btn:hover { background: white; color: black; }
 
   </style>
 </head>
@@ -404,5 +474,15 @@
 
   
 
+  <div id="carModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <img id="modalImg" class="modal-img" src="" alt="Car">
+      <h2 id="modalTitle">Car Name</h2>
+      <p id="modalPrice" class="price">$0</p>
+      <button class="modal-btn" id="addToCartBtn">Add to Cart</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
